@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Menu, MenuItem, Icon } from 'semantic-ui-react';
+import { Menu, MenuItem, Icon, Confirm } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../api/AuthContext';
@@ -9,6 +9,7 @@ const Sidebar = () => {
   const [activeItem, setActiveItem] = useState('');
   const [customWatchlists, setCustomWatchlists] = useState([]);
   const [watchlistsOpen, setWatchlistsOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,7 +32,12 @@ const Sidebar = () => {
   };
 
   const handleLogout = () => {
+    setConfirmOpen(true);
+  };
+
+  const confirmLogout = () => {
     logout();
+    setConfirmOpen(false);
     window.location.reload();
   };
 
@@ -124,6 +130,12 @@ const Sidebar = () => {
           </Menu>
         )}
       </Menu>
+      <Confirm
+        open={confirmOpen}
+        onCancel={() => setConfirmOpen(false)}
+        onConfirm={confirmLogout}
+        content='Are you sure you want to logout?'
+      />
     </div>
   );
 };
