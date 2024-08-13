@@ -23,4 +23,3 @@ export const getMovieByTitle = async (title) => {
       throw error;
     }
   };
-

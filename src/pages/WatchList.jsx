@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../api/AuthContext';
-import WatchlistGrid from '../components/List';
+import MovieList from '../components/List';
 
 const WatchList = () => {
   const { currentUser } = useContext(AuthContext);
@@ -37,7 +37,7 @@ const WatchList = () => {
   return (
     <div className="p-4">
       <h1 className="text-4xl mb-6">My Watchlist</h1>
-      <WatchlistGrid watchlist={watchlist} removeFromList={removeFromWatchlist} />
+      <MovieList watchlist={watchlist} removeFromList={removeFromWatchlist} />
     </div>
   );
 };
