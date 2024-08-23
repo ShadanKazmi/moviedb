@@ -23,3 +23,25 @@ export const getMovieByTitle = async (title) => {
       throw error;
     }
   };
+
+
+export const getMovieBySearch = async (query) => {
+    try {
+      const response = await axios.get(URL, {
+        params: {
+          apikey: API_KEY,
+          s: query,
+        },
+      });
+
+      if (response.data.Response === 'True') {
+        console.log(response.data)
+        return response.data.Search;
+      } else {
+        throw new Error(response.data.Error);
+      }
+    } catch (error) {
+      console.error(`Error fetching movie: ${error.message}`);
+      throw error;
+    }
+  };
