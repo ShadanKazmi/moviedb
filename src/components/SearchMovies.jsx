@@ -25,9 +25,9 @@ const SearchMovies = () => {
 
   const handleSearch = async () => {
     try {
-      const movie = await getMovieByTitle(query);
+      const movie = await getMovieBySearch(query);
       if (movie) {
-        setResults([movie]);
+        setResults(movie);
       } else {
         setResults([]);
       }
