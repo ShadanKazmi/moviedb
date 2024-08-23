@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Input, Card, Icon, Image, Modal, Button, Form, Dropdown } from 'semantic-ui-react';
-import { getMovieByTitle } from '../api/getMovies';
+import { getMovieByTitle, getMovieBySearch } from '../api/getMovies';
 import { AuthContext } from '../api/AuthContext';
 
 const SearchMovies = () => {
